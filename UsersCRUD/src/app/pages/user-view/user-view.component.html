@@ -1,16 +1,20 @@
-<section class="container my-5">
+<section class="container mt-5">
     <div class="row align-items-center justify-content-center g-md-5 g-3">
-        <figure class="col-12 col-md-6 text-center mb-4 mb-md-0">
+        <figure class="col-12 col-md-6">
             <img [src]="ElUser.image" [alt]="ElUser.first_name + ' ' + ElUser.last_name" class="img-fluid rounded-circle shadow-lg">
         </figure>
 
-        <div class="col-12 col-md-6 text-md-start text-center d-flex flex-column h-100">
-            <h1 class="fw-bold mb-3">{{ElUser.first_name}}</h1>
-            <h1 class="fw-bold mb-3">{{ElUser.last_name}}</h1>
-            <p class="fs-5 mb-3"><strong>Nombre Usuario:</strong> {{ElUser.username}}</p>
-            <p class="fs-5 mb-3"><strong>Email:</strong> {{ElUser.email}}</p>
-
-            <div class="d-flex justify-content-between mt-auto">
+        <div class="col-12 col-md-6 d-flex flex-column h-100">
+            <div class="mb-4">
+                <h1 class="div-h1">{{ElUser.first_name}}</h1>
+                <h1 class="div-h1 mb-4">{{ElUser.last_name}}</h1>
+                <p class="div-p mb-1"><strong>Nombre Usuario:</strong></p>
+                <p class="div-p mb-4">{{ElUser.username}}</p>
+                <p class="div-p mb-1"><strong>Email:</strong></p>
+                <p class="div-p">{{ElUser.email}}</p>
+                
+            </div>
+            <div class="d-flex justify-content-between">
                 <button type="submit" class="btn d-flex flex-column align-items-center flex-grow-1 p-2">
                     <img src="./lupa.webp" alt="Enviar" class="mb-2 logo-card">
                     <p>Ver detalle</p>
