@@ -20,7 +20,7 @@ export class HomeComponent {
     try{
       let response: IResponse = await this.usersService.getAllPromise();
       this.arrUsers = response.results;
-      console.log(this.arrUsers);
+      console.log('home',this.arrUsers);
 
     } catch (error) {
       console.error(error);

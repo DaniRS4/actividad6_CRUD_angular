@@ -1,4 +1,4 @@
-import { Component, inject, Inject, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { IUser } from '../../interfaces/iuser.interface';
 import { UsersService } from '../../services/users.service';
 
@@ -14,10 +14,10 @@ export class UserViewComponent {
   usersService = inject(UsersService);
 
   async ngOnInit() {
-    let id = this.idUser;
+    let id = Number(this.idUser);
     try{
       this.ElUser = await this.usersService.getUser(id);
-      console.log(this.ElUser);
+      console.log('view', this.ElUser);
     }catch(error){
       console.error(error);
     }

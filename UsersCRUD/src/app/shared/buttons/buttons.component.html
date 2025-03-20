@@ -1,1 +1,13 @@
-<p>buttons works!</p>
+
+    <button type="submit" class="btn d-flex flex-column align-items-center flex-grow-1 p-2" [routerLink]="['/user',myUser.id]" >
+        <img src="./lupa.webp" alt="Enviar" class="mb-2 logo-card">
+        <p>Ver detalle</p>
+    </button>
+    <button type="submit" class="btn d-flex flex-column align-items-center flex-grow-1 p-2" [routerLink]="['/user','update',myUser.id]">
+        <img src="./actualizar.png" alt="Enviar" class="mb-2 logo-card">
+        <p>Actualizar</p>
+    </button>
+    <button type="submit" class="btn d-flex flex-column align-items-center flex-grow-1 p-2" (click)="deleteUser(myUser.id)">
+        <img src="./papelera.png" alt="Enviar" class="mb-2 logo-card">
+        <p>Borrar</p>
+    </button>
