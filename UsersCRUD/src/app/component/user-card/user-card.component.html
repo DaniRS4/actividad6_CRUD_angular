@@ -1,11 +1,11 @@
 
 <div class="d-flex flex-column h-100">
-    <figure class="justify-content-center">
+    <figure class="justify-content-center" >
         <img class="images-card" [src]="myUser.image" [alt]="myUser.first_name + ' ' + myUser.last_name">
     </figure>
 
     <h5 class="font-weight-bold mt-4">{{myUser.first_name + ' ' + myUser.last_name}}</h5>
     
-    <div app-buttons [myUser]="myUser" class="d-flex justify-content-between mt-auto"></div>
+    <div app-buttons [myUser]="myUser" [volver] ="false" (deleteItemEmit)="deleteUser($event)" class="d-flex justify-content-between mt-auto"></div>
     
 </div>
