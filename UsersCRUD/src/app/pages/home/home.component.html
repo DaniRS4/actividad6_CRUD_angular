@@ -1,8 +1,8 @@
 <section class="text-center">
     <div class="mt-5 row g-5 justify-content-center">
-        @for (user of arrUsers; track user.id) {
+        @for (user of arrUsers; track user._id) {
         <article class="col-12 col-md-4 col-lg-3 justify-content-center">
-            <app-user-card [myUser]="user"></app-user-card>
+            <app-user-card [myUser]="user"  (deleteItemEmit)="deleteUser($event)"></app-user-card>
         </article>
         }
     </div>

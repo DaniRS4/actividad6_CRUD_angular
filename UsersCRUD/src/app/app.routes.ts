@@ -6,8 +6,9 @@ import { UserViewComponent } from './pages/user-view/user-view.component';
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "home" },
     { path: "home", component: HomeComponent},
-    { path: "user/:idUser", component: UserViewComponent},
-    { path: "user/update/:idUser", component: UserFormComponent },
+    { path: "user/new", component: UserFormComponent },
+    { path: "user/:_idUser", component: UserViewComponent},
+    { path: "user/update/:_idUser", component: UserFormComponent },
     { path: "**", redirectTo: 'home' }
 
 ];
