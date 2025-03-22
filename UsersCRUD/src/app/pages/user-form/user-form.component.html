@@ -1,0 +1,26 @@
+<section class="container mt-5">
+    <h1 class="text-3xl font-bold mb-4">{{title}}</h1>
+    <hr>
+    <form class="mt-5" [formGroup]="userForm" (ngSubmit)="getDataForm()">
+        <input type="hidden" formControlName="_id" >
+        <div class="form-group mb-4">
+            <label for="first_name">Nombre Usuario</label>
+            <input type="text" class="form-control" id="first_name" formControlName="first_name" placeholder="Ingrese nombre de usuario">
+        </div>
+        <div class="form-group mb-4">
+            <label for="last_name">Apellidos Usuario</label>
+            <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Ingrese apellidos">
+        </div>
+        <div class="form-group mb-4">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ingrese email">
+        </div>
+        <div class="form-group mb-4">
+            <label for="image">Imagen (URL)</label>
+            <input type="text" class="form-control" id="image" formControlName="image" placeholder="Ingrese URL de la imagen">
+        </div>
+        <div class="mb-4">
+            <input type="submit" [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Guardar'" class="btn btn-primary">
+        </div>
+    </form>
+</section>
