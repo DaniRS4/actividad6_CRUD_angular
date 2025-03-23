@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/iuser.interface';
 import Swal from 'sweetalert2';
@@ -46,15 +46,37 @@ export class UserFormComponent {
       this.userForm = new FormGroup({
         _id: new FormControl(this._idUser || null, []),
         id: new FormControl(this.user?.id || 0, []),
-        first_name: new FormControl(this.user?.first_name || "", []),
-        last_name: new FormControl(this.user?.last_name || "", []),
+        first_name: new FormControl(this.user?.first_name || "", [
+          Validators.required,
+          Validators.minLength(3)
+        ]),
+        last_name: new FormControl(this.user?.last_name || "", [
+          Validators.required,
+          Validators.minLength(3)
+        ]),
         username: new FormControl(this.user?.username || "", []),
-        email: new FormControl(this.user?.email || "", []), 
-        image: new FormControl(this.user?.image || "", []),
-        password: new FormControl(this.user?.password || "", []),
+        email: new FormControl(this.user?.email || "", [ 
+          Validators.required,
+          // Sé que los emails de la api no valen con este patrón, pero creo que es necesario el {2,3} del final.
+          Validators.pattern(/^.+@.+\.[a-zA-Z]{2,3}$/)
+        ]), 
+        image: new FormControl(this.user?.image || "", [
+          Validators.required,
+          // que empiece por https:// o que termine en .png, .jpg, .jpeg, .gif, .bmp, .webp
+          Validators.pattern(/^(https:\/\/.*|.*\.(png|jpg|jpeg|gif|bmp|webp))$/i)
+        ]),
+        password: new FormControl(this.user?.password || "", [
+          //Validators.required,
+          //Validators.minLength(8),
+          //Validators.maxLength(16)
+        ]),
       }, [])
 
     
+    }
+
+    checkControl(controlName: string, errorName: string): boolean | undefined {
+      return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched
     }
 
     async getDataForm() {

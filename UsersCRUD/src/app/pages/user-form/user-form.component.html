@@ -6,21 +6,44 @@
         <div class="form-group mb-4">
             <label for="first_name">Nombre Usuario</label>
             <input type="text" class="form-control" id="first_name" formControlName="first_name" placeholder="Ingrese nombre de usuario">
+            @if(checkControl('first_name', 'required')){
+                <p class="error">El campo es obligatorio.</p>
+                }
+            @if(checkControl('first_name', 'minlength')){
+                <p class="error">El campo debe tener al menos 3 caracteres.</p>
+                }
         </div>
         <div class="form-group mb-4">
             <label for="last_name">Apellidos Usuario</label>
             <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Ingrese apellidos">
+            @if(checkControl('last_name', 'required')){
+                <p class="error">El campo es obligatorio.</p>
+                }
+            @if(checkControl('last_name', 'minlength')){
+                <p class="error">El campo debe tener al menos 3 caracteres.</p>
+                }
         </div>
         <div class="form-group mb-4">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ingrese email">
+            @if(checkControl('email', 'required')){
+                <p class="error">El campo es obligatorio.</p>
+                }
+            @if(checkControl('email', 'pattern')){
+                <p class="error">El campo no tiene un formato válido.</p>
+                }
         </div>
         <div class="form-group mb-4">
             <label for="image">Imagen (URL)</label>
             <input type="text" class="form-control" id="image" formControlName="image" placeholder="Ingrese URL de la imagen">
+            @if(checkControl('image', 'required')){
+                <p class="error">El campo es obligatorio.</p>
+                }
+            @if(checkControl('image', 'pattern')){
+                <p class="error">El campo no tiene un formato válido.</p>
+                }
         </div>
-        <div class="mb-4">
-            <input type="submit" [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Guardar'" class="btn btn-primary">
-        </div>
+        <input type="submit" [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Guardar'" class="btn btn-primary" [disabled]="userForm.invalid">
+       
     </form>
 </section>
